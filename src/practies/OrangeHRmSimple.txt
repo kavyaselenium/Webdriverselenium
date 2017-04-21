@@ -1,0 +1,40 @@
+package TestNG;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.firefox.FirefoxDriver;
+
+public class OrangeHRmSimple 
+{
+	public static FirefoxDriver driver;
+        public static void main(String[] args) 
+	    {
+		     appLaunch();
+		     appLogin();
+		     appLogout();
+		     appClose();
+	    }
+		public static void appLaunch()
+		{
+			driver=new FirefoxDriver();
+			driver.navigate().to("http://opensource.demo.orangehrmlive.com/");
+			driver.manage().window().maximize();
+		}
+		public static void appLogin()
+		{
+			driver.findElement(By.xpath(".//*[@id='txtUsername']")).sendKeys("Admin");
+			driver.findElement(By.xpath(".//*[@id='txtPassword']")).sendKeys("admin");
+			driver.findElement(By.xpath(".//*[@id='btnLogin']")).click();
+		}
+		public static void appLogout()
+		{
+			driver.findElement(By.id("welcome")).click();
+			driver.findElement(By.linkText("Logout")).click();
+		}
+		public static void appClose()
+		{
+			driver.close();
+		}
+		
+	}
+
+
